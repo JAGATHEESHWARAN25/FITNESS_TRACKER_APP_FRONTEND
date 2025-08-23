@@ -1,0 +1,163 @@
+/* -------- Page Container -------- */
+.assign-container {
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8fafc, #e0f2fe); /* same as admin */
+  background-attachment: fixed;
+  font-family: 'Inter', sans-serif;
+  color: #1e293b;
+}
+
+/* -------- Titles & Messages -------- */
+.assign-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.assign-message {
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  background: #f1f5f9;
+  font-weight: 500;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* -------- Form Section -------- */
+.assign-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 450px;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+  margin: 0 auto 2rem auto;
+}
+
+.assign-form input,
+.assign-form select,
+.assign-form textarea {
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.5rem;
+  border: 1px solid #cbd5e1;
+  font-size: 0.95rem;
+  width: 100%;
+}
+
+.assign-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+/* -------- Form Buttons -------- */
+.primary-btn {
+  padding: 0.6rem 1.25rem;
+  border: none;
+  border-radius: 0.75rem;
+  background: #10b981;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.primary-btn:hover {
+  background: #059669;
+}
+
+.secondary-btn {
+  padding: 0.6rem 1.25rem;
+  border: none;
+  border-radius: 0.75rem;
+  background: #e5e7eb;
+  color: #374151;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.secondary-btn:hover {
+  background: #d1d5db;
+}
+
+/* -------- Table Section -------- */
+.template-heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 1rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+}
+
+.assign-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 1rem;
+}
+
+.assign-table th,
+.assign-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.assign-table thead {
+  background: #f1f5f9;
+  font-weight: 600;
+}
+
+.assign-table tr:hover {
+  background: #f9fafb;
+}
+
+/* -------- Action Buttons -------- */
+.action-btn {
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  margin-right: 0.4rem;
+}
+
+.edit-btn {
+  background: #3b82f6;
+  color: #fff;
+}
+
+.edit-btn:hover {
+  background: #2563eb;
+}
+
+.delete-btn {
+  background: #ef4444;
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+}
+
+.no-templates {
+  text-align: center;
+  padding: 1rem;
+  color: #64748b;
+}

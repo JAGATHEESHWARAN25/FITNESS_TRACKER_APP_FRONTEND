@@ -1,0 +1,468 @@
+/* Modern Workout List - WorkoutList.css */
+
+.workout-container {
+  max-width: 1200px;
+  margin: var(--space-6) auto;
+  padding: 0 var(--space-4);
+}
+
+.workout-header {
+  text-align: center;
+  margin-bottom: var(--space-8);
+  animation: fadeIn 0.6s ease-out;
+}
+
+.workout-header h2 {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary), var(--success));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.workout-header h2::before {
+  content: '📊';
+  font-size: var(--text-4xl);
+  -webkit-text-fill-color: initial;
+  animation: pulse 2s infinite;
+}
+
+.workout-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.stat-card {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--gray-50) 100%);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--gray-100);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--success));
+  transform: translateX(-100%);
+  transition: transform var(--transition-slow);
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.stat-card:hover::before {
+  transform: translateX(0);
+}
+
+.stat-value {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: var(--space-1);
+}
+
+.stat-label {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.workout-table {
+  width: 100%;
+  background: var(--bg-primary);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--gray-100);
+  animation: slideUp 0.8s ease-out both;
+  position: relative;
+}
+
+.workout-table::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--success) 50%, var(--primary) 100%);
+  background-size: 200% 100%;
+  animation: gradientSlide 3s ease infinite;
+}
+
+.workout-table thead {
+  background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+}
+
+.workout-table th {
+  padding: var(--space-5) var(--space-6);
+  text-align: left;
+  font-weight: 700;
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  border: none;
+  position: relative;
+  white-space: nowrap;
+}
+
+.workout-table th::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: var(--space-6);
+  right: var(--space-6);
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), transparent);
+}
+
+.workout-table th:first-child::before {
+  content: '🏃‍♂️';
+  margin-right: var(--space-2);
+}
+
+.workout-table th:nth-child(2)::before {
+  content: '⏱️';
+  margin-right: var(--space-2);
+}
+
+.workout-table th:nth-child(3)::before {
+  content: '🔥';
+  margin-right: var(--space-2);
+}
+
+.workout-table th:nth-child(4)::before {
+  content: '📅';
+  margin-right: var(--space-2);
+}
+
+.workout-table th:nth-child(5)::before {
+  content: '📝';
+  margin-right: var(--space-2);
+}
+
+.workout-table tbody tr {
+  transition: all var(--transition-base);
+  border-bottom: 1px solid var(--gray-100);
+  position: relative;
+}
+
+.workout-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.workout-table tbody tr:hover {
+  background: linear-gradient(135deg, var(--primary-50) 0%, var(--bg-primary) 100%);
+  transform: scale(1.01);
+}
+
+.workout-table tbody tr:hover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--primary), var(--success));
+}
+
+.workout-table td {
+  padding: var(--space-4) var(--space-6);
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  border: none;
+  position: relative;
+}
+
+.workout-table td:first-child {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.workout-table td[data-type="duration"]::after {
+  content: ' min';
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+}
+
+.workout-table td[data-type="calories"]::after {
+  content: ' cal';
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+}
+
+.workout-empty {
+  text-align: center;
+  padding: var(--space-16) var(--space-8);
+  background: var(--bg-primary);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-md);
+  animation: fadeIn 0.6s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.workout-empty::before {
+  content: '📝';
+  font-size: 4rem;
+  display: block;
+  margin-bottom: var(--space-4);
+  opacity: 0.5;
+  animation: bounce 2s infinite;
+}
+
+.workout-empty h3 {
+  font-size: var(--text-2xl);
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.workout-empty p {
+  color: var(--text-secondary);
+  font-size: var(--text-lg);
+  max-width: 400px;
+  margin: 0 auto var(--space-6) auto;
+}
+
+.workout-empty .btn {
+  margin-top: var(--space-4);
+}
+
+.workout-error {
+  text-align: center;
+  padding: var(--space-12) var(--space-8);
+  background: linear-gradient(135deg, var(--danger-50) 0%, var(--bg-primary) 100%);
+  border: 2px solid var(--danger-100);
+  border-radius: var(--radius-2xl);
+  animation: shake 0.5s ease-out;
+  position: relative;
+}
+
+.workout-error::before {
+  content: '⚠️';
+  font-size: 3rem;
+  display: block;
+  margin-bottom: var(--space-4);
+  animation: pulse 2s infinite;
+}
+
+.workout-error h3 {
+  font-size: var(--text-2xl);
+  color: var(--danger-dark);
+  margin-bottom: var(--space-3);
+}
+
+.workout-error p {
+  color: var(--danger);
+  font-size: var(--text-lg);
+}
+
+.workout-loader {
+  text-align: center;
+  padding: var(--space-16) var(--space-8);
+  background: var(--bg-primary);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.workout-loader::before {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto var(--space-6) auto;
+  border: 4px solid var(--gray-200);
+  border-top: 4px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.workout-loader p {
+  color: var(--text-secondary);
+  font-size: var(--text-lg);
+  font-weight: 500;
+}
+
+/* Action Buttons in Table */
+.workout-actions {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: flex-end;
+}
+
+.btn-action {
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-sm);
+  border-radius: var(--radius-lg);
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.btn-edit {
+  background: linear-gradient(135deg, var(--warning-100), var(--warning-50));
+  color: var(--warning-dark);
+  border: 1px solid var(--warning-200);
+}
+
+.btn-edit:hover {
+  background: linear-gradient(135deg, var(--warning), var(--warning-light));
+  color: var(--text-inverse);
+  transform: translateY(-1px);
+}
+
+.btn-delete {
+  background: linear-gradient(135deg, var(--danger-100), var(--danger-50));
+  color: var(--danger-dark);
+  border: 1px solid var(--danger-200);
+}
+
+.btn-delete:hover {
+  background: linear-gradient(135deg, var(--danger), var(--danger-light));
+  color: var(--text-inverse);
+  transform: translateY(-1px);
+}
+
+/* Animations */
+@keyframes gradientSlide {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .workout-table th,
+  .workout-table td {
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text-sm);
+  }
+  
+  .workout-stats {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .workout-table {
+    border-radius: var(--radius-lg);
+  }
+  
+  .workout-table thead {
+    display: none;
+  }
+  
+  .workout-table tbody tr {
+    display: block;
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-4);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-200);
+  }
+  
+  .workout-table tbody tr:hover {
+    transform: none;
+    box-shadow: var(--shadow-md);
+  }
+  
+  .workout-table td {
+    display: block;
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--gray-100);
+    position: relative;
+    padding-left: 120px;
+  }
+  
+  .workout-table td:last-child {
+    border-bottom: none;
+  }
+  
+  .workout-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: var(--space-4);
+    top: var(--space-3);
+    font-weight: 600;
+    color: var(--text-primary);
+    width: 100px;
+  }
+  
+  .workout-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+  }
+  
+  .stat-card {
+    padding: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .workout-container {
+    padding: 0 var(--space-2);
+  }
+  
+  .workout-header h2 {
+    font-size: var(--text-2xl);
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  
+  .workout-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .workout-empty,
+  .workout-error,
+  .workout-loader {
+    padding: var(--space-8) var(--space-4);
+  }
+  
+  .workout-table td {
+    padding-left: 100px;
+    font-size: var(--text-sm);
+  }
+  
+  .workout-table td::before {
+    width: 80px;
+    font-size: var(--text-xs);
+  }
+}

@@ -1,0 +1,205 @@
+/* =========================
+   HERO (Landing)
+   ========================= */
+.hero {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  position: relative;
+  background: linear-gradient(135deg, #0f172a, #1e293b, #3b82f6);
+  color: #fff;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.hero-inner {
+  max-width: 1000px;
+  z-index: 2;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #10b981, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-sub {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  margin: 0 auto 2rem;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: linear-gradient(to right, #10b981, #3b82f6);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+}
+
+.btn-outline {
+  border: 2px solid #fff;
+  color: #fff;
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* =========================
+   DASHBOARD
+   ========================= */
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.dash-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.dash-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(to right, #10b981, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dash-header .muted {
+  color: #64748b;
+  font-size: 1.1rem;
+}
+
+.dash-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.card-animated {
+  background: #fff;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  border: 1px solid #f1f5f9;
+  text-align: center;
+}
+
+.card-animated:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.1);
+}
+
+.card-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 1rem;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  margin: 0 auto 1.25rem;
+  transition: background 0.3s ease;
+}
+
+.card-animated:hover .card-icon {
+  background: linear-gradient(to right, #10b981, #3b82f6);
+  color: #fff;
+}
+
+.card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #475569;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card .btn {
+  flex: 1;
+  min-width: fit-content;
+}
+
+/* Dashboard Variants */
+.dash-trainer .card-animated {
+  border-left: 4px solid #10b981;
+}
+
+.dash-member .card-animated {
+  border-left: 4px solid #3b82f6;
+}
+
+.dash-admin .card-animated {
+  border-left: 4px solid #f59e0b;
+}
+
+.dash-admin .card-animated:hover .card-icon {
+  background: linear-gradient(to right, #f59e0b, #fbbf24);
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 60vh;
+    padding: 3rem 1rem;
+  }
+
+  .dashboard {
+    padding: 3rem 1rem;
+  }
+
+  .dash-cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .card .btn {
+    width: 100%;
+  }
+}
