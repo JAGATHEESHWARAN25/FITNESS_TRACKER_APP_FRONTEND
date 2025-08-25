@@ -6,13 +6,14 @@ export default function AdminUsers() {
   const [users, setUsers] = useState([]);
   const [message, setMessage] = useState("");
 
-  // assignment form state
+  // Assignment form state
   const [memberId, setMemberId] = useState("");
   const [trainerId, setTrainerId] = useState("");
 
+  // Load all users
   async function loadUsers() {
     try {
-      const data = await fetchUsers(); // all users
+      const data = await fetchUsers();
       setUsers(data);
     } catch (err) {
       setMessage("❌ Failed to load users");
@@ -23,6 +24,7 @@ export default function AdminUsers() {
     loadUsers();
   }, []);
 
+  // Change user role
   async function handleRoleChange(id, role) {
     try {
       await changeUserRole(id, role);
@@ -33,6 +35,7 @@ export default function AdminUsers() {
     }
   }
 
+  // Toggle user status
   async function handleStatusChange(id, active) {
     try {
       await toggleUserStatus(id, active);
@@ -43,21 +46,25 @@ export default function AdminUsers() {
     }
   }
 
+  // Assign member to trainer
   async function handleAssign() {
     if (!memberId || !trainerId) {
       setMessage("⚠️ Select both Member and Trainer");
       return;
     }
     try {
-      await assignMemberToTrainer(trainerId, memberId);
+      // Convert IDs to numbers before sending
+      await assignMemberToTrainer(Number(trainerId), Number(memberId));
       setMessage("✅ Member assigned to trainer");
       setMemberId("");
       setTrainerId("");
-    } catch {
-      setMessage("❌ Failed to assign member");
+    } catch (err) {
+      console.error(err);
+      setMessage("❌ Failed to assign member: " + (err?.message || ""));
     }
   }
 
+  // Separate members and trainers
   const members = users.filter((u) => u.role === "MEMBER");
   const trainers = users.filter((u) => u.role === "TRAINER");
 
