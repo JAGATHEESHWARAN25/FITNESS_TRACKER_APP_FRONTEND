@@ -14,7 +14,7 @@ export default function TrainerChat() {
   // 🔹 Fetch members assigned to this trainer
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/api/trainer/${trainerId}/members`, {
+      .get(`https://fitness-tracker-app-backend.onrender.com/api/trainer/${trainerId}/members`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -36,7 +36,7 @@ export default function TrainerChat() {
   const fetchMessages = () => {
     axios
       .get(
-        `http://localhost:8080/api/messages/chat/${trainerId}/${selectedMember.id}`,
+        `https://fitness-tracker-app-backend.onrender.com/api/messages/chat/${trainerId}/${selectedMember.id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       )
       .then((res) => setMessages(res.data))
@@ -48,7 +48,7 @@ export default function TrainerChat() {
 
     axios
       .post(
-        `http://localhost:8080/api/messages/send?senderId=${trainerId}&receiverId=${selectedMember.id}`,
+        `https://fitness-tracker-app-backend.onrender.com/api/messages/send?senderId=${trainerId}&receiverId=${selectedMember.id}`,
         newMessage,
         {
           headers: {
