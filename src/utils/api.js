@@ -1,4 +1,3 @@
-// src/utils/api.js
 import axios from "axios";
 
 const API_BASE = process.env.REACT_APP_API_URL || "https://fitness-tracker-app-backend.onrender.com";
@@ -31,7 +30,7 @@ function normalizeError(err) {
   return { message: err?.message || "Network error" };
 }
 
-// yyyy-MM-dd normalizer
+// Helper: yyyy-MM-dd normalizer
 function toYMD(input) {
   if (!input) return input;
   if (typeof input === "string") {
@@ -248,10 +247,13 @@ export async function toggleUserStatus(userId, active) {
   }
 }
 
+// ✅ Corrected assignMemberToTrainer
 export async function assignMemberToTrainer(trainerId, memberId) {
   try {
     const res = await apiClient.post(
-      `/api/admin/assignments/assign?trainerId=${trainerId}&memberId=${memberId}`
+      `/api/admin/assignments/assign`,
+      null,
+      { params: { trainerId: Number(trainerId), memberId: Number(memberId) } }
     );
     return res.data;
   } catch (err) {
@@ -305,7 +307,7 @@ export async function updateMyProfile(profile) {
   }
 }
 
-
+/* ============== Password Reset ============== */
 export const requestPasswordReset = async (identifier) => {
   return apiClient.post('/api/auth/forgot-password', { identifier });
 };
@@ -313,6 +315,7 @@ export const requestPasswordReset = async (identifier) => {
 export const resetPassword = async (token, newPassword) => {
   return apiClient.post('/api/auth/reset-password', { token, newPassword });
 };
+
 export async function getNotifications(userId, token) {
   const res = await fetch(`/api/notifications/${userId}`, {
     headers: { Authorization: `Bearer ${token}` }
@@ -326,6 +329,5 @@ export async function markNotificationRead(id, token) {
     headers: { Authorization: `Bearer ${token}` }
   });
 }
-
 
 export default apiClient;
