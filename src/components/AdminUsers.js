@@ -6,11 +6,9 @@ export default function AdminUsers() {
   const [users, setUsers] = useState([]);
   const [message, setMessage] = useState("");
 
-  // Assignment form state
   const [memberId, setMemberId] = useState("");
   const [trainerId, setTrainerId] = useState("");
 
-  // Load all users
   async function loadUsers() {
     try {
       const data = await fetchUsers();
@@ -24,7 +22,6 @@ export default function AdminUsers() {
     loadUsers();
   }, []);
 
-  // Change user role
   async function handleRoleChange(id, role) {
     try {
       await changeUserRole(id, role);
@@ -35,7 +32,6 @@ export default function AdminUsers() {
     }
   }
 
-  // Toggle user status
   async function handleStatusChange(id, active) {
     try {
       await toggleUserStatus(id, active);
@@ -46,25 +42,24 @@ export default function AdminUsers() {
     }
   }
 
-  // Assign member to trainer
   async function handleAssign() {
     if (!memberId || !trainerId) {
       setMessage("⚠️ Select both Member and Trainer");
       return;
     }
     try {
-      // Convert IDs to numbers before sending
-      await assignMemberToTrainer(Number(trainerId), Number(memberId));
+      // ✅ Send as JSON body for deployed backend
+      await assignMemberToTrainer(trainerId, memberId);
       setMessage("✅ Member assigned to trainer");
       setMemberId("");
       setTrainerId("");
+      loadUsers(); // refresh members if needed
     } catch (err) {
       console.error(err);
       setMessage("❌ Failed to assign member: " + (err?.message || ""));
     }
   }
 
-  // Separate members and trainers
   const members = users.filter((u) => u.role === "MEMBER");
   const trainers = users.filter((u) => u.role === "TRAINER");
 
@@ -73,7 +68,6 @@ export default function AdminUsers() {
       <h2 className="admin-title">👤 User Management</h2>
       {message && <p className="admin-message">{message}</p>}
 
-      {/* Users table */}
       <div className="table-wrapper">
         <table className="admin-table">
           <thead>
@@ -122,7 +116,6 @@ export default function AdminUsers() {
         </table>
       </div>
 
-      {/* Assignment Section */}
       <section className="assign-section">
         <h3>Assign Member → Trainer</h3>
         <div className="assign-form">
