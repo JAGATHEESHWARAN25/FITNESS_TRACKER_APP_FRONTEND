@@ -1,7 +1,7 @@
 // src/utils/api.js
 import axios from "axios";
 
-const API_BASE = process.env.REACT_APP_API_URL || "http://localhost:8080";
+const API_BASE = process.env.REACT_APP_API_URL || "https://fitness-tracker-app-backend.onrender.com";
 
 const apiClient = axios.create({
   baseURL: API_BASE,
