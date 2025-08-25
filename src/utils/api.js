@@ -250,11 +250,10 @@ export async function toggleUserStatus(userId, active) {
 // ✅ Corrected assignMemberToTrainer
 export async function assignMemberToTrainer(trainerId, memberId) {
   try {
-    const res = await apiClient.post(
-      `/api/admin/assignments/assign`,
-      null,
-      { params: { trainerId: Number(trainerId), memberId: Number(memberId) } }
-    );
+    const res = await apiClient.post(`/api/admin/assignments/assign`, {
+      trainerId: Number(trainerId),
+      memberId: Number(memberId),
+    });
     return res.data;
   } catch (err) {
     throw normalizeError(err);
