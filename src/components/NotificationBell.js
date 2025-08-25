@@ -13,7 +13,7 @@ export default function NotificationBell() {
     if (!userId || !token) return;
 
     axios
-      .get(`http://localhost:8080/api/notifications/${userId}`, {
+      .get(`https://fitness-tracker-app-backend.onrender.com/api/notifications/${userId}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
